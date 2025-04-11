@@ -214,6 +214,7 @@ class CROHMEDatamodule(pl.LightningDataModule):
         return DataLoader(
             self.val_dataset,
             batch_size=self.eval_batch_size,
+            drop_last=True,
             shuffle=False,
             num_workers=self.num_workers,
             collate_fn=collate_fn,

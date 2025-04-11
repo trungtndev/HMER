@@ -14,7 +14,8 @@ trainer:
   # gpus: 1
   gpus: 1 #, 1, 2, 3
   accelerator: ddp
-  check_val_every_n_epoch: 2
+  check_val_every_n_epoch: 1
+  val_check_interval: 1.0
   max_epochs: 300
   deterministic: true
 
@@ -49,7 +50,7 @@ model:
 data:
   zipfile_path: data
   test_year: "2014"
-  train_batch_size: 2
-  eval_batch_size: 2
+  train_batch_size: 4
+  eval_batch_size: 4
   num_workers: 5
   scale_aug: true

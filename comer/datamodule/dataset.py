@@ -24,18 +24,16 @@ class CROHMEDataset(Dataset):
         trans_list += [
             # ScaleToLimitRange(w_lo=W_LO, w_hi=W_HI, h_lo=H_LO, h_hi=H_HI),
             tr.ToTensor(),
-            # tr.Resize((2, 2)),
+            tr.Resize((1, 1)),
         ]
         self.transform = tr.Compose(
             trans_list
         )
 
     def __getitem__(self, idx):
-        # fname, img, caption= self.ds[idx]
         fname, caption = self.ds[idx]
         img = Image.open(fname)#.convert('RGB')
         img = self.transform(img)
-        # img = [self.transform(im) for im in img]
 
         return fname, img, caption
 
