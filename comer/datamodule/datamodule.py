@@ -98,7 +98,7 @@ def extract_data(archive: str, dir_name: str) -> Data:
             # move image to memory immediately, avoid lazy loading, which will lead to None pointer error in loading
             # img = Image.open(f).copy()
         # data.append((img_name, img, formula))
-        img_name = f"data/{dir_name}/img/{img_name}.bmp"
+        img_name = f"{archive}/{dir_name}/img/{img_name}.bmp"
         data.append((img_name, formula))
 
 
