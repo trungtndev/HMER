@@ -7,6 +7,8 @@ from torch import FloatTensor, LongTensor
 
 from comer.datamodule import Batch, vocab
 from comer.model.comer import CoMER
+from comer.model.swin_comer import SwinCoMER
+
 from comer.utils.utils import (ExpRateRecorder, Hypothesis, ce_loss,
                                to_bi_tgt_out)
 
@@ -39,7 +41,7 @@ class LitCoMER(pl.LightningModule):
         super().__init__()
         self.save_hyperparameters()
 
-        self.comer_model = CoMER(
+        self.comer_model = SwinCoMER(
             d_model=d_model,
             growth_rate=growth_rate,
             num_layers=num_layers,
