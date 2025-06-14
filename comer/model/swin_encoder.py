@@ -33,12 +33,13 @@ class SwinEncoder(pl.LightningModule):
 
         img_feature = self.swin.forward_features(img)
         img_feature = self.linear(img_feature)
+        print(img_feature.shape)
         img_feature = rearrange(img_feature, 'b (h w) c -> b h w c', h=7, w=7)
 
         out_mask = img_mask[:, 0::4, 0::4] # After Patch cutting
         out_mask = out_mask[:, 0::2, 0::2] # After Block 1
-        out_mask  = out_mask[:, 0::2, 0::2] # After Block 2
-        out_mask  = out_mask[:, 0::2, 0::2] # After Block 3
+        out_mask = out_mask[:, 0::2, 0::2] # After Block 2
+        out_mask = out_mask[:, 0::2, 0::2] # After Block 3
 
         return img_feature, out_mask
 
